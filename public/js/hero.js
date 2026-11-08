@@ -133,8 +133,9 @@ window.addEventListener('load', () => {
     // Three stacked variant cards — one per cycle.
     const variantWraps = gsap.utils.toArray('.hero_visual .hero_step4 [data-step-last]')
 
+    const isRtl = document.documentElement.getAttribute('dir') === 'rtl'
     variantWraps.slice(1).forEach(el => {
-      gsap.set(el, { position: 'absolute', top: 0, left: 0 })
+      gsap.set(el, { position: 'absolute', top: 0, left: isRtl ? 'auto' : 0, right: isRtl ? 0 : 'auto' })
     })
 
     function createPromptTl() {
