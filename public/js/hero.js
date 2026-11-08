@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
       autoSplit: true
     })
 
-    gsap.set('.h1-lines-mask', { paddingBottom: 10, marginBottom: -10 })
+    
 
     const p1 = new SplitText('.hero_main .hero_p', {
       types: 'lines',
@@ -374,20 +374,16 @@ window.addEventListener('load', () => {
         duration: 1.5,
         ease: 'power4.out'
       }, 0.3)
-      .from(h1.lines, {
+      .from('.heading-style-h1', {
         y: 32,
         opacity: 0,
-        rotation: 4,
-        transformOrigin: 'left center',
         duration: 1,
-        stagger: 0.15,
-        ease: 'back.out'
+        ease: 'power4.out'
       }, 0.5)
-      .from(p1.lines, {
-        yPercent: 100,
+      .from('.hero_main .hero_p', {
+        y: 20,
         opacity: 0,
         duration: 1,
-        stagger: 0.1,
         ease: 'power4.out'
       }, '<0.3')
       .from('.hero_main .button-group', {
@@ -505,20 +501,16 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: 1.5,
       ease: 'power4.out'
     }, 0.3)
-    .from(h1.lines, {
+    .from('.heading-style-h1', {
       y: 32,
       opacity: 0,
-      rotation: 4,
-      transformOrigin: 'left center',
       duration: 1,
-      stagger: 0.15,
-      ease: 'back.out'
+      ease: 'power4.out'
     }, 0.5)
-    .from(p1.lines, {
-      yPercent: 100,
+    .from('.hero_main .hero_p', {
+      y: 20,
       opacity: 0,
       duration: 1,
-      stagger: 0.1,
       ease: 'power4.out'
     }, '<0.3')
     .from('.hero_main .button-group', {

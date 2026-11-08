@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="w-mod-js" data-wf-page="6998a7a4efcd66d9f2857e6d" data-wf-site="6998a7a4efcd66d9f2857e79">
+    <html lang="fa" dir="rtl" className="w-mod-js" data-wf-page="6998a7a4efcd66d9f2857e6d" data-wf-site="6998a7a4efcd66d9f2857e79">
       <head>
         <link href="https://cdn.prod.website-files.com" rel="preconnect" crossOrigin="anonymous" />
         <link href="https://cdn.prod.website-files.com/6998a7a4efcd66d9f2857e79/css/auxia.shared.3374faec6.css" rel="stylesheet" type="text/css" />

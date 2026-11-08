@@ -645,14 +645,12 @@ gsap.timeline({
     counterEl.textContent = value < 10 ? `0${value}` : value
   }
 }, '<')
-  .from(automationsText.chars, {
+  .from('.automations_text', {
     opacity: 0,
-    filter: 'blur(2px)',
-    duration: 0.5,
-    stagger: {
-      from: 'center',
-      each: 0.01
-    }
+    filter: 'blur(3px)',
+    y: 15,
+    duration: 0.6,
+    ease: 'power2.out'
   }, '<50%')  
   
 gsap.timeline({
@@ -705,45 +703,23 @@ gsap.utils.toArray('[automations-bottom]').forEach(section => {
 
 gsap.utils.toArray('.heading-style-h2, [fd-h2]').forEach(el => {
   if (el.hasAttribute('prevent')) return
-
-  SplitText.create(el, {
-    type: 'words',
-    mask: 'words',
-    wordsClass: 'h2',
-    autoSplit: true,
-    onSplit(self) {
-      gsap.set(self.masks, {
-        paddingBottom: 20,
-        paddingRight: 20,
-        marginRight: -20,
-        marginBottom: -20
-      })
-
-      return gsap.from(self.words, {
-        yPercent: 100,
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.05,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 80%'
-        }
-      })
+  gsap.from(el, {
+    y: 30,
+    opacity: 0,
+    duration: 1.2,
+    ease: 'power4.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 80%'
     }
   })
 })
 gsap.utils.toArray('[fd-paragraph]').forEach(el => {
   if (el.closest('.legal_rich')) return
-
-  const split = new SplitText(el, { types: 'lines', mask: 'lines',
-  autoSplit: true })
-
-  gsap.from(split.lines, {
-    yPercent: 100,
+  gsap.from(el, {
+    y: 20,
     opacity: 0,
     duration: 1,
-    stagger: 0.1,
     ease: 'power4.out',
     scrollTrigger: {
       trigger: el,
@@ -895,11 +871,8 @@ if (!isMobile) {
       .from(chars, {
         opacity: 0,
         filter: 'blur(2px)',
-        stagger: {
-          from: 'center',
-          each: 0.005
-        },
-        ease: 'none',
+        duration: 0.5,
+        ease: 'none'
       }, '<35%')
   })
 } else {
@@ -1030,10 +1003,7 @@ const projectTop = gsap.utils.toArray(
   projectBrief.querySelectorAll('.process_step2-top')
 )
 
-const projectBriefP = new SplitText(
-  projectBrief.querySelector('p'), { types: 'lines', mask: 'lines',
-  autoSplit: true }
-)
+// projectBriefP
 
 const tl = gsap.timeline({
   scrollTrigger: {
@@ -1050,11 +1020,10 @@ tl
     duration: 1,
     ease: 'power4.out'
   })
-  .from(projectBriefP.lines, {
+  .from(projectBrief.querySelector('p'), {
     yPercent: 100,
     opacity: 0,
     duration: 1,
-    stagger: 0.05,
     ease: 'power4.out'
   }, '<0.2')
   .from(projectBrief.querySelectorAll('.process_step2-border'), {
@@ -1293,10 +1262,7 @@ const projectPlanTop = gsap.utils.toArray(
   projectPlan.querySelectorAll('.process_step2-top')
 )
 
-const projectPlanP = new SplitText(
-  projectPlan.querySelector('p'), { types: 'lines', mask: 'lines',
-  autoSplit: true }
-)
+// projectPlanP
 
 const projectPlantl = gsap.timeline({
   scrollTrigger: {
@@ -1313,11 +1279,10 @@ projectPlantl
     duration: 1,
     ease: 'power4.out'
   })
-  .from(projectPlanP.lines, {
+  .from(projectPlan.querySelector('p'), {
     yPercent: 100,
     opacity: 0,
     duration: 1,
-    stagger: 0.05,
     ease: 'power4.out'
   }, '<0.2')
   .from(projectPlan.querySelectorAll('.process_step2-border'), {
@@ -1351,15 +1316,10 @@ trustedCards.forEach((card, index) => {
   const heading = card.querySelector('.heading-style-h3')
   const text = card.querySelector('.text-style-supermuted')
 
-  const splitHeading = new SplitText(heading, { types: 'words',
-  autoSplit: true })
-  const splitText = new SplitText(text, { types: 'lines', mask: 'lines',
-  autoSplit: true })
-
   gsap.set(line, { height: '0%' })
   gsap.set(icon, { opacity: 0, y: 32 })
-  gsap.set(splitHeading.words, { yPercent: 100, opacity: 0 })
-  gsap.set(splitText.lines, { yPercent: 100, opacity: 0 })
+  gsap.set(heading, { y: 20, opacity: 0 })
+  gsap.set(text, { y: 20, opacity: 0 })
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -1369,8 +1329,7 @@ trustedCards.forEach((card, index) => {
     delay: index * 0.2
   })
 
-  tl
-    .to(line, {
+  tl.to(line, {
       height: '100%',
       duration: 1,
       ease: 'power3.out'
@@ -1381,18 +1340,16 @@ trustedCards.forEach((card, index) => {
       duration: 0.8,
       ease: 'power3.out'
     }, '<0.2')
-    .to(splitHeading.words, {
-      yPercent: 0,
+    .to(heading, {
+      y: 0,
       opacity: 1,
       duration: 0.8,
-      stagger: 0.05,
       ease: 'power4.out'
     }, '<0.1')
-    .to(splitText.lines, {
-      yPercent: 0,
+    .to(text, {
+      y: 0,
       opacity: 1,
       duration: 1,
-      stagger: 0.08,
       ease: 'power4.out'
     }, '<0.2')
 })
