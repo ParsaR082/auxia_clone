@@ -15,21 +15,6 @@ window.addEventListener('load', () => {
   })
 
   if (!isMobile) {
-    const h1 = new SplitText('.heading-style-h1', {
-      types: 'lines',
-      mask: 'lines',
-      linesClass: 'h1-lines',
-      autoSplit: true
-    })
-
-    
-
-    const p1 = new SplitText('.hero_main .hero_p', {
-      types: 'lines',
-      mask: 'lines',
-      autoSplit: true
-    })
-
     const TAG_MUTED = { color: '#c3c2b2', backgroundColor: '#f0efe3', borderColor: '#e2e1d3' }
     const TAG_ACTIVE = { color: '#0b4fff', backgroundColor: '#d8dade', borderColor: '#d8dade' }
 
@@ -434,17 +419,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-  const h1 = new SplitText('.heading-style-h1', {
-    types: 'lines',
-    mask: 'lines',
-    linesClass: 'h1-lines'
-  })
-  const p1 = new SplitText('.hero_main .hero_p', {
-    types: 'lines',
-    mask: 'lines'
-  })
-
-  gsap.set('.h1-lines-mask', { paddingBottom: 10, marginBottom: -10 })
   gsap.set('.page-wrapper', { opacity: 1 })
 
   const heroMobile = document.querySelector('.hero_mobile')

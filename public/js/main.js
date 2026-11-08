@@ -616,8 +616,6 @@ createOrganizedNetwork({
 const counterEl = document.querySelector('.automations_counter')
 const finalVal = parseInt(counterEl.textContent.replace(/\D/g, ''), 10) || 0
 let counterObj = { val: 0 }
-const automationsText = new SplitText('.automations_text', { types: 'chars',
-  autoSplit: true })
 
 gsap.timeline({
   scrollTrigger: {
@@ -792,11 +790,7 @@ const processLinesWrap = document.querySelectorAll('.process_lines-wrap')
 const processCTA = document.querySelectorAll('.process_cta')
 const processP = document.querySelectorAll('.process_text')
 const processVLine = document.querySelectorAll('.process_progress-vertical')
-const tagText = new SplitText('.process_tag-text', {
-  types: 'chars, words',
-  charsClass: 'tag-char',
-  autoSplit: true
-})
+
 gsap.timeline({
     scrollTrigger: {
       trigger: '.process_step1',
@@ -852,7 +846,7 @@ processSteps.forEach(step => {
 if (!isMobile) {
   processLinesWrap.forEach((wrap) => {
     const whiteLine = wrap.querySelector('#process-blue')
-    const chars = wrap.querySelectorAll('.tag-char')
+    const chars = wrap.querySelectorAll('.process_tag-text')
     const tag = wrap.querySelector('.process_tag')
 
     const tl = gsap.timeline({
@@ -877,7 +871,7 @@ if (!isMobile) {
   })
 } else {
   processLinesWrap.forEach((wrap) => {
-    const chars = wrap.querySelectorAll('.tag-char')
+    const chars = wrap.querySelectorAll('.process_tag-text')
     const tag = wrap.querySelector('.process_tag')
 
     const tl = gsap.timeline({

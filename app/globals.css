@@ -11974,4 +11974,13 @@ flex-direction: column;
   }
 }
 
+[dir="rtl"] .heading-style-h1,
+[dir="rtl"] .heading-style-h2,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3 {
+  letter-spacing: normal !important;
+}
+
+
 
