@@ -201,7 +201,7 @@ function createGridNetwork({
     scrollTrigger: {
       trigger: canvas,
       start: 'top 80%',
-      toggleActions: 'play none none none'
+      toggleActions: 'play none none reverse'
     }
   })
 
@@ -502,7 +502,7 @@ function createOrganizedNetwork({
     scrollTrigger: {
       trigger: canvas,
       start: 'top 80%',
-      toggleActions: 'play none none none'
+      toggleActions: 'play none none reverse'
     }
   })
 
@@ -676,7 +676,7 @@ gsap.utils.toArray('[automations-bottom]').forEach(section => {
     scrollTrigger: {
       trigger: section,
       start: 'bottom bottom',
-      toggleActions: 'play none none none'
+      toggleActions: 'play none none reverse'
     }
   })
 
@@ -701,64 +701,75 @@ gsap.utils.toArray('[automations-bottom]').forEach(section => {
 
 gsap.utils.toArray('.heading-style-h2, [fd-h2]').forEach(el => {
   if (el.hasAttribute('prevent')) return
-  gsap.from(el, {
-    y: 30,
-    opacity: 0,
-    duration: 1.2,
-    ease: 'power4.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 80%'
+  gsap.fromTo(el,
+    { y: 30, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: 'power4.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
     }
-  })
+  )
 })
 gsap.utils.toArray('[fd-paragraph]').forEach(el => {
   if (el.closest('.legal_rich')) return
-  gsap.from(el, {
-    y: 20,
-    opacity: 0,
-    duration: 1,
-    ease: 'power4.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 80%'
+  gsap.fromTo(el,
+    { y: 20, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: 'power4.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
     }
-  })
+  )
 })
 
 gsap.utils.toArray('[fd-fade-children]').forEach(el => {
-  gsap.set(el.children, { opacity: 0, y: 25 })
-
-  gsap.to(el.children,
-  {
-    opacity: 1,
-    y: 0,
-    duration: 1.5,
-    stagger: 0.12,
-    ease: 'power4.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 80%'
+  gsap.fromTo(el.children,
+    { opacity: 0, y: 25 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.5,
+      stagger: 0.12,
+      ease: 'power4.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
     }
-  })
+  )
 })
 
 gsap.utils.toArray('[fd-fade]').forEach(el => {
   gsap.fromTo(el,
-  {
-    opacity: 0,
-    y: 20
-  },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 1.3,
-    ease: 'power4.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 80%'
+    {
+      opacity: 0,
+      y: 20
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.3,
+      ease: 'power4.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
     }
-  })
+  )
 })
 
 const splides = document.querySelectorAll('.splide.is-case-studies')
@@ -1319,6 +1330,7 @@ trustedCards.forEach((card, index) => {
     scrollTrigger: {
       trigger: card,
       start: 'top 70%',
+      toggleActions: 'play none none reverse'
     },
     delay: index * 0.2
   })
